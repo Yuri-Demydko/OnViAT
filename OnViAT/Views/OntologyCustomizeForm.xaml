@@ -1,0 +1,37 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:v="using:OnViAT"
+        xmlns:onViAt="clr-namespace:OnViAT.Views"
+        xmlns:l="using:OnViAT.Views"
+        mc:Ignorable="d" MinWidth="640" MinHeight="720" CanResize="false"
+        x:Class="OnViAT.Views.OntologyCustomizeForm"
+        Title="OnViAT"
+        SizeToContent="WidthAndHeight"
+        
+        Closing="Window_OnClosing">
+    
+            <StackPanel Orientation="Vertical">
+            <TextBlock FontStyle="Oblique" Margin="10" FontWeight="ExtraBold" FontSize="20">Настройка онтологии</TextBlock>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <StackPanel Orientation="Vertical" Width="300" x:Name="OntologyClassesTreeViewStackPanel" HorizontalAlignment="Left">
+                    
+                    <Label HorizontalAlignment="Center" Width="150" x:Name="OtLabel" Target="OntologyClassesTreeView">Дерево классов</Label>
+                    <ScrollViewer VerticalScrollBarVisibility="Visible" Height="620">
+                        <TreeView SelectionChanged="OntologyClassesTreeView_OnSelectionChanged" SelectionMode="Single" FontSize="11" x:Name="OntologyClassesTreeView" Width="250" >
+                        </TreeView>
+                    </ScrollViewer>
+                </StackPanel>        
+                    
+                    <StackPanel Margin="10,0,0,0" Spacing="10">
+                        <Label HorizontalAlignment="Left" Width="295">Действия</Label>
+                        <TextBox MinHeight="30" FontSize="16" AcceptsReturn="False" TextAlignment="Left" HorizontalAlignment="Left" x:Name="NewClassName" Width="300"></TextBox>
+                        <Button HorizontalContentAlignment="Center" x:Name="RenameBtn" Width="300" Click="Rename_OnClick">Переименовать</Button>
+                        <Button HorizontalContentAlignment="Center" x:Name="ParallelBtn" Width="300" Click="ParallelClass_OnClick" >Добавить параллельный класс</Button>
+                        <Button HorizontalContentAlignment="Center" x:Name="SubclassBtn" Width="300" Click="SubClass_OnClick">Добавить подкласс</Button>
+                        <Button HorizontalContentAlignment="Center" x:Name="RemoveBtn" Width="300" Click="Remove_OnClick" >Удалить класс</Button>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+</Window>

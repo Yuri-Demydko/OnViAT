@@ -1,0 +1,141 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:libVlc="clr-namespace:OnViAT.LibVLC"
+        x:CompileBindings="True"
+        mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="720" MinHeight="720" MinWidth="1280"
+        CanResize="false"
+        x:Class="OnViAT.Views.MainWindow"
+        Title="OnViAT">
+    <StackPanel Orientation="Vertical">
+        <DockPanel>
+            <Menu DockPanel.Dock="Top" FontSize="12">
+                <MenuItem Header="Хранилище">
+                    <MenuItem x:Name="OpenDir_mi" Click="OpenDir_OnClick" Header="Открыть директорию для работы"/>
+                    <MenuItem x:Name="SaveFile_mi" Click="SaveCurrentFile_OnClick" Header="Сохранить разметку выбранного файла"/>
+                    <MenuItem x:Name="SaveDir_mi" Click="SaveDir_OnClick" Header="Сохранить разметку для всех файлов"/>
+                </MenuItem>
+                <MenuItem x:Name="File_mi" Header="Видеофайл">
+                    <MenuItem x:Name="EditMeta_mi" Header="Редактировать метаданные файла" Click="EditMetadataButton_Click"/>
+                    <MenuItem x:Name="ClearMarkup_mi" Header="Очистить разметку файла" Click="ClearSelectedFileMarkup_OnClick"/>
+                </MenuItem>
+                <MenuItem x:Name="Fragment_mi" Header="Фрагмент">
+                    <!--Добавить хоткей-->
+                    <MenuItem x:Name="RecordFragment_mi" Header="Начать запись фрагмента" Click="RecordFragment_MenuItem_OnClick" />
+                    <MenuItem x:Name="AddFragment_mi" Header="Выделить фрагмент вручную" Click="AddFragment_OnClick"/>
+                    <MenuItem x:Name="EditFragment_mi" Header="Редактировать выбранный фрагмент" Click="EditFragment_OnClick"/> 
+                    <MenuItem x:Name="RemoveFragment_mi" Header="Удалить выбранный фрагмент" Click="RemoveFragment_OnClick"/>
+                </MenuItem>
+                <MenuItem x:Name="Individual_mi" Header="Индивид">
+                    <MenuItem x:Name="AddIndividual_mi" Header="Добавить индивида в фрагмент" Click="AddIndividual_OnClick"/>
+                    <MenuItem x:Name="EditIndividual_mi" Header="Редактировать выбранного индивида" Click="EditIndividual_OnClick"/>
+                    <MenuItem x:Name="RemoveIndividual_mi" Header="Удалить выбранного индивида" Click="RemoveIndividual_OnClick" />
+                </MenuItem>
+                <MenuItem x:Name="Ontology_mi" Header="Онтология">
+                    <MenuItem x:Name="OntologySettings_mi" Click="OntologySettings_mi_OnClick" Header="Настройка онтологии" IsEnabled="True" />
+                    <MenuItem x:Name="LoadAdditionGraph_mi" Click="ImportAdditionGraph_mi_OnClick" Header="Загрузить дополнение онтологии" IsEnabled="True" />
+                    <MenuItem x:Name="ExportAdditionGraph_mi" Click="ExportAdditionGraph_mi_OnClick" Header="Сохранить дополнение онтологии" IsEnabled="False" />
+                </MenuItem>
+                <MenuItem Header="Поиск" x:Name="Search_mi">
+                    <MenuItem Header="Текстовый поиск" Click="QSearch_OnClick"/>
+                    <MenuItem Header="Меню поиска" Click="SearchBtn_OnClick"/>
+                    <MenuItem Header="Показать всё" Click="StopSearch_OnClick"/>
+                </MenuItem>
+                <MenuItem x:Name="Other_mi" Header="Разработка">
+                    <MenuItem x:Name="ExportMarkup64_mi" Header="Экспортировать разметку выбранного файла" Click="ExportMarkup64_mi_OnClick" />
+                    <MenuItem x:Name="ExportMarkup_mi" Header="Экспортировать декодированную разметку выбранного файла" Click="ExportXml_Click" />
+                    <MenuItem x:Name="RegenURIs_mi" Header="Пересоздать URI всех видеофайлов" Click="RegenURIs_mi_OnClick" />
+                    <MenuItem x:Name="ClearAllMarkups_mi" Header="Очистить разметку всех видеофайлов" Click="ClearAllMarkups_mi_OnClick" />
+                </MenuItem>
+                <MenuItem Header="Быстрый доступ" Click="OpenQA_MenuItem_OnClick"/>
+            </Menu>
+        </DockPanel><!--Панель меню-->
+        <StackPanel Orientation="Horizontal" >
+            <Grid  x:Name="ListBoxesGrid" RowDefinitions="690"
+                   ColumnDefinitions="Auto,1,Auto,1,Auto" Margin="0,0,10,0">
+                <ScrollViewer MinWidth="160" Grid.Row="0"  Grid.Column="0" VerticalScrollBarVisibility="Visible">
+                <ListBox x:Name="FilesList" SelectionChanged="FilesList_OnSelectionChanged" SelectionMode="Single"></ListBox>
+                </ScrollViewer><!--Список файлов в хранилище-->
+                <GridSplitter IsEnabled="False" Grid.Column="1" Width="1" Background="Gray" />
+                <ScrollViewer   MinWidth="160" Grid.Row="0"  Grid.Column="2" VerticalScrollBarVisibility="Visible">
+            <ListBox  x:Name="FragmentsList" SelectionMode="Single" SelectionChanged="FragmentsList_OnSelectionChanged"></ListBox>
+                </ScrollViewer><!--Список фрагментов видео-->
+                    <GridSplitter IsEnabled="False" Grid.Column="3" Width="1" Background="Gray" />
+                <ScrollViewer  MinWidth="160" Grid.Row="0"  Grid.Column="4" VerticalScrollBarVisibility="Visible">
+                <ListBox Grid.Row="0"  Grid.Column="4" x:Name="IndividualsList"  SelectionMode="Single" SelectionChanged="IndividualsList_OnSelectionChanged"></ListBox>
+                </ScrollViewer><!--Список индивидов фрагмента-->
+            </Grid>
+            <StackPanel  Orientation="Vertical" HorizontalAlignment="Center" ZIndex="1">
+                <StackPanel Orientation="Vertical">
+                    <libVlc:VideoView Padding="0" x:Name="VideoView" Width="768"
+                                      Height="432" Background="Gray" /> <!--Видеоплеер-->
+                    <StackPanel ZIndex="5" Orientation="Horizontal" VerticalAlignment="Center" Width="768" Height="30"  Margin="0,5,0,0">
+                        <Button Width="30" Height="30" Margin="0,0,5,0" x:Name="PlayPauseBTN" Click="PlayPauseBTN_OnClick">
+                            <Image x:Name="PlayPauseVideoImage" Source="/Assets/PlayVideo.png"/>
+                        </Button>
+                        <Button x:Name="StopBTN" Width="30" Height="30"  Margin="0,0,5,0" Click="StopBTN_OnClick">
+                            <Image  Source="/Assets/StopVideo.png"/>
+                        </Button>
+                        <Slider VerticalAlignment="Center" Margin="0,-16,0,0" x:Name="VideoSlider" Height="40" Minimum="0" Maximum="100" Width="698" Tapped="VideoSlider_OnTapped" />
+                    </StackPanel><!--Кнопки управления видеоплеером-->
+                </StackPanel>
+                        <StackPanel Orientation="Horizontal" Height="240" Margin="0,10,0,10">
+                            <TabControl Padding="0,30,0,0" Margin="-5,0,0,0" FontSize="12" VerticalAlignment="Top" HorizontalAlignment="Left" HorizontalContentAlignment="Left" TabStripPlacement="Left">
+                        <TabItem >
+                            <TabItem.Header>
+                                <TextBlock FontSize="14">Информация о видеофайле</TextBlock>
+                            </TabItem.Header>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Height="240" Width="480" Spacing="5" Margin="10">
+                                <TextBlock FontWeight="Heavy" TextAlignment="Left" FontSize="16">Информация о видеофайле</TextBlock>
+                                <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="170" HorizontalScrollBarVisibility="Disabled">
+                                    <TextBlock x:Name="FileInfo" Width="480" TextWrapping="Wrap" TextAlignment="Left">Видеофайл не выбран</TextBlock>
+                                </ScrollViewer>
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem >
+                            <TabItem.Header>
+                                <TextBlock FontSize="14">Информация о разметке</TextBlock>
+                            </TabItem.Header>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Height="240" Width="480" Spacing="5" Margin="10">
+                                <TextBlock FontWeight="Heavy" TextAlignment="Left" FontSize="16">Информация о разметке видеофайла</TextBlock>
+                                <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="170" HorizontalScrollBarVisibility="Disabled">
+                                    <TextBlock x:Name="MarkupInfo" Width="480" TextWrapping="Wrap" TextAlignment="Left">Видеофайл не выбран</TextBlock>
+                                </ScrollViewer>
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem>
+                            <TabItem.Header>
+                                <TextBlock FontSize="14">Информация о фрагменте</TextBlock>
+                            </TabItem.Header>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Height="240" Width="480" Spacing="5" Margin="10">
+                                <TextBlock FontWeight="Heavy" TextAlignment="Left" FontSize="16">Информация о фрагменте</TextBlock>
+                                <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="170" HorizontalScrollBarVisibility="Disabled">
+                                <TextBlock x:Name="FragmentInfo" Width="480" TextWrapping="Wrap" TextAlignment="Left">Фрагмент не выбран</TextBlock>
+                                </ScrollViewer>
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem>
+                            <TabItem.Header>
+                                <TextBlock FontSize="14">Информация об индивиде</TextBlock>
+                            </TabItem.Header>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Height="240" Width="480" Spacing="5" Margin="10">
+                                <TextBlock FontWeight="Heavy" TextAlignment="Left" FontSize="16">Информация об индивиде</TextBlock>
+                                <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="170" HorizontalScrollBarVisibility="Disabled">
+                                <TextBlock x:Name="IndividualInfo" TextWrapping="Wrap" TextAlignment="Left">Индивид не выбран</TextBlock>
+                                </ScrollViewer>
+                            </StackPanel>
+                        </TabItem>
+                    </TabControl><!--вкладки с информацией о файле/фрагменте/индивиде-->
+                        </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <!--Sorry for that ;(-->
+        <StackPanel x:Name="sssshiit" IsVisible="False">
+            <Image x:Name="StopRecImg" Source="/Assets/StopRecording.png"/>
+            <Image x:Name="RecImg" Source="/Assets/RecordFragment.png"/>
+            <Image x:Name="PlayVideoImg" Source="/Assets/PlayVideo.png"/>
+            <Image x:Name="PauseVideoImg" Source="/Assets/PauseVideo.png"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

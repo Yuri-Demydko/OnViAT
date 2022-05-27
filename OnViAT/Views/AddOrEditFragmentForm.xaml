@@ -1,0 +1,36 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:v="using:OnViAT"
+        xmlns:onViAt="clr-namespace:OnViAT.Views"
+        xmlns:l="using:OnViAT.Views"
+        mc:Ignorable="d" MinWidth="300" MaxHeight="460" Height="460" CanResize="False"
+        x:Class="OnViAT.Views.AddOrEditFragmentForm"
+        SizeToContent="Width"
+        Title="OnViAT">
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="20,20,20,40" Spacing="5">
+            <TextBlock FontWeight="Heavy" HorizontalAlignment="Left" x:Name="Header" FontSize="16">Добавление фрагмента</TextBlock>
+            <Label HorizontalAlignment="Left" Width="200" Target="BeginsAt_SP">Начало фрагмента</Label>
+            <StackPanel Orientation="Horizontal" x:Name="BeginsAt_SP" Width="250" HorizontalAlignment="Left" Margin="10,0,10,0">
+                <NumericUpDown x:Name="BeginsAt_H" ValueChanged="BH_onChange" Width="76" Minimum="0" Maximum="10" ShowButtonSpinner="False" Increment="1" FormatString="00"></NumericUpDown>
+                <TextBlock TextAlignment="Center" MinWidth="10" FontSize="14" HorizontalAlignment="Center" FontWeight="Bold" VerticalAlignment="Center" Width="6">:</TextBlock>
+                <NumericUpDown x:Name="BeginsAt_M" ValueChanged="BM_onChange" Width="76"  Minimum="0" Maximum="10" ShowButtonSpinner="False" Increment="1" FormatString="00"></NumericUpDown>
+                <TextBlock TextAlignment="Center" MinWidth="10" FontSize="14" HorizontalAlignment="Center" FontWeight="Bold" VerticalAlignment="Center" Width="6">:</TextBlock>
+                <NumericUpDown x:Name="BeginsAt_S" ValueChanged="BS_onChange" Width="76"  Minimum="0" Maximum="10" ShowButtonSpinner="False" Increment="1" FormatString="00"></NumericUpDown>
+            </StackPanel>
+            <Label HorizontalAlignment="Left" Width="200" Target="EndsAt_SP">Конец фрагмента</Label>
+            <StackPanel Orientation="Horizontal" x:Name="EndsAt_SP" Width="250" HorizontalAlignment="Left" Margin="10,0,10,0">
+                <NumericUpDown x:Name="EndsAt_H" ValueChanged="EH_OnValueChanged" Width="76"  Minimum="0" Maximum="10" ShowButtonSpinner="False" Increment="1" FormatString="00"></NumericUpDown>
+                <TextBlock TextAlignment="Center" MinWidth="10" FontSize="14" HorizontalAlignment="Center" FontWeight="Bold" VerticalAlignment="Center" Width="6">:</TextBlock>
+                <NumericUpDown x:Name="EndsAt_M" ValueChanged="EM_OnValueChanged" Width="76"  Minimum="0" Maximum="10" ShowButtonSpinner="False" Increment="1" FormatString="00"></NumericUpDown>
+                <TextBlock TextAlignment="Center" MinWidth="10" FontSize="14" HorizontalAlignment="Center" FontWeight="Bold" VerticalAlignment="Center" Width="6">:</TextBlock>
+                <NumericUpDown x:Name="EndsAt_S" ValueChanged="ES_OnValueChanged" Width="76"  Minimum="0" Maximum="10" ShowButtonSpinner="False" Increment="1" FormatString="00"></NumericUpDown>
+            </StackPanel>
+            <Label HorizontalAlignment="Left" Width="200" Target="Description">Описание фрагмента</Label>
+            <TextBox FontSize="16" TextWrapping="Wrap" AcceptsReturn="True" HorizontalAlignment="Center" x:Name="Description" Margin="10,0,10,10" Width="250" Height="200"></TextBox>
+            <StackPanel Orientation="Horizontal" Width="250" HorizontalAlignment="Center" Spacing="10" Margin="10,0,10,10">
+            <Button Click="Ok_onClick" HorizontalContentAlignment="Center" Width="120" Margin="0,0,0,0">Сохранить</Button> <Button Width="120" HorizontalContentAlignment="Center" Margin="0,0,0,0" Click="Cancel_onClick">Отмена</Button>
+            </StackPanel>
+        </StackPanel>
+</Window>

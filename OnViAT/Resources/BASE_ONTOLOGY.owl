@@ -1,0 +1,367 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#"
+     xml:base="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:ns="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:wot="http://xmlns.com/wot/0.1/"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:ma-ont="http://www.w3.org/ns/ma-ont#"
+     xmlns:timeline="http://purl.org/NET/c4dm/timeline.owl#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt">
+        <owl:imports rdf:resource="http://purl.org/NET/c4dm/timeline.owl"/>
+        <owl:imports rdf:resource="http://www.w3.org/ns/ma-ont"/>
+        <owl:imports rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#HasContentObject -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#HasContentObject">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#IsContentObjectOf"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/ma-ont#MediaFragment"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#ContentObject"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#IsContentObjectOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#IsContentObjectOf">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#ContentObject"/>
+        <rdfs:range rdf:resource="http://www.w3.org/ns/ma-ont#MediaFragment"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#QuantityOfSameObjects -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#QuantityOfSameObjects">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#ContentObject"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+    <!-- http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#UniversalObjectName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#UniversalObjectName">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#ContentObject"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#fathersName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#fathersName">
+        <rdfs:domain rdf:resource="http://www.w3.org/2000/10/swap/pim/contact#Person"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#AbstractObject -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#AbstractObject">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#ContentObject"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#ConcreteObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#Area -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#Area">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#NonLivingSubstance"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#State"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#TimePeriod"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#ConcreteObject -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#ConcreteObject">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#ContentObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#ContentObject -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#ContentObject">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#IsContentObjectOf"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/ns/ma-ont#MediaFragment"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#UniversalObjectName"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#Event -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#Event">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#NonLivingSubstance"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#Matter"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#State"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#TimePeriod"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#GraphicalObject -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#GraphicalObject">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#VisualObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#InformationalObject -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#InformationalObject">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#AbstractObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#InstantEvent -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#InstantEvent">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#Event"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#Process"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#LivingEntity -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#LivingEntity">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#ConcreteObject"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#NonLivingSubstance"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#Matter -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#Matter">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#NonLivingSubstance"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#State"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#TimePeriod"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#MobileEntity -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#MobileEntity">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#LivingEntity"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#NonMobileEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#NonLivingSubstance -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#NonLivingSubstance">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#ConcreteObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#NonMobileEntity -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#NonMobileEntity">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#LivingEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#Process -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#Process">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#Event"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#SoundObject -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#SoundObject">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#InformationalObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#State -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#State">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#NonLivingSubstance"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#TimePeriod"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#TextObject -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#TextObject">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#VisualObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#Thesis -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#Thesis">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#InformationalObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#TimePeriod -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#TimePeriod">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#NonLivingSubstance"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#VisualObject -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#VisualObject">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#InformationalObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#0DimensionalObject -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#0DimensionalObject">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#GraphicalObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#1DimensionalObject -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#1DimensionalObject">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#GraphicalObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#2DimensionalObject -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#2DimensionalObject">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#GraphicalObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#3DimensionalObject -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#3DimensionalObject">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#GraphicalObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#4+DimensionalObject -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#4+DimensionalObject">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#GraphicalObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2000/10/swap/pim/contact#Person -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2000/10/swap/pim/contact#Person">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#MobileEntity"/>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#SoundObject"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#Thesis"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#VisualObject"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#0DimensionalObject"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#1DimensionalObject"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#2DimensionalObject"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#3DimensionalObject"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/yuri/ontologies/2020/11/ViAnOnt#4+DimensionalObject"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

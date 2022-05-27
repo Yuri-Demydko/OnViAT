@@ -1,0 +1,82 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:v="using:LibVLCSharp.Avalonia"
+        xmlns:onViAt="clr-namespace:OnViAT.Views"
+        xmlns:l="using:OnViAT.Views"
+        mc:Ignorable="d" MinWidth="1280" MinHeight="720" CanResize="false"
+        x:Class="OnViAT.Views.SearchMenuForm"
+        Title="OnViAT"
+        SizeToContent="WidthAndHeight">
+    
+        
+            <!--<TabControl Height="720" TabStripPlacement="Top" VerticalContentAlignment="Top" Padding="0">-->
+                <!--<TabItem Header="Поиск по идивидам"> ~1~Individual search@1@-->
+            <StackPanel Orientation="Vertical">
+            <TextBlock FontStyle="Oblique" Margin="10" FontWeight="ExtraBold" FontSize="20">Поиск по индивидам</TextBlock>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <StackPanel Orientation="Vertical" Width="300" x:Name="OntologyClassesTreeViewStackPanel" HorizontalAlignment="Left">
+                    <!--<TextBlock FontWeight="Heavy" HorizontalAlignment="Left" FontSize="14">Характеристики объекта</TextBlock>--> 
+                    <Label HorizontalAlignment="Center" Width="150" x:Name="OTLabel" Target="OntologyClassesTreeView">Тип объекта</Label>
+                    <ScrollViewer VerticalScrollBarVisibility="Visible" Height="620">
+                        <TreeView SelectionMode="Single" FontSize="11" x:Name="OntologyClassesTreeView" Width="250" >
+                        </TreeView>
+                    </ScrollViewer>
+                </StackPanel>        
+                <StackPanel Orientation="Vertical" Width="600" VerticalAlignment="Stretch" HorizontalAlignment="Left" Margin="20" Spacing="5">
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                        <StackPanel Orientation="Vertical" Margin="0,0,5,0">
+                            <Label HorizontalAlignment="Left" Width="295" Target="UOName">Название объекта</Label>
+                            <TextBox MinHeight="30" FontSize="16" AcceptsReturn="False" TextAlignment="Left" HorizontalAlignment="Left" x:Name="UOName" Width="300"></TextBox>   
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                            <Label HorizontalAlignment="Left" Width="295" Target="Quantity">Количество объектов</Label>
+                            <NumericUpDown Minimum="0" HorizontalAlignment="Left" IsEnabled="False" Value="1" x:Name="Quantity" Width="300"></NumericUpDown> 
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical" Width="295" Margin="0,0,5,0">
+                            <Label HorizontalAlignment="Left" Width="295">Режим сравнения (название)</Label>
+                            <StackPanel x:Name="NameCompMode_rb">
+                                <RadioButton x:Name="Dont_n"  Checked="Dont_n_OnChecked">Не учитывать</RadioButton>
+                                <RadioButton x:Name="Eq_n" IsChecked="true" Checked="Dont_n_OnChecked">Равно</RadioButton>
+                                <RadioButton x:Name="Contains_n" Checked="Dont_n_OnChecked">Содержит</RadioButton>
+                            </StackPanel>
+                            <Label HorizontalAlignment="Left" Width="295">Поиск по иерархии классов</Label>
+                            <StackPanel x:Name="HSearchMode_rb">
+                                <RadioButton IsChecked="True">Только заданный тип</RadioButton>
+                                <RadioButton>Заданный тип и производные</RadioButton>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Width="295">
+                    <Label HorizontalAlignment="Left" Width="295">Режим сравнения (количество)</Label>
+                        <StackPanel x:Name="QCompSelection_rb">
+                        <RadioButton x:Name="Dont" IsChecked="true" Checked="QuantityCompModeRadionButton_OnChecked">Не учитывать</RadioButton>
+                        <RadioButton x:Name="Eq" Checked="QuantityCompModeRadionButton_OnChecked">Равно</RadioButton>
+                        <RadioButton x:Name="Gt" Checked="QuantityCompModeRadionButton_OnChecked">Больше</RadioButton>
+                        <RadioButton x:Name="Lt" Checked="QuantityCompModeRadionButton_OnChecked">Меньше</RadioButton>
+                        <RadioButton x:Name="GtE" Checked="QuantityCompModeRadionButton_OnChecked">Больше/Равно</RadioButton>
+                        <RadioButton x:Name="LtE" Checked="QuantityCompModeRadionButton_OnChecked">Меньше/Равно</RadioButton>
+                        </StackPanel>
+                            <Button HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" Click="AddSearchObject_OnClick" Width="147">Добавить</Button>
+                    </StackPanel>
+          
+                    </StackPanel>
+                </StackPanel>
+         
+                
+                    <StackPanel Orientation="Vertical" MinWidth="300" HorizontalAlignment="Right">
+                    <TextBlock FontWeight="Heavy" HorizontalAlignment="Left" FontSize="14">Объекты поиска</TextBlock> 
+                    <ScrollViewer VerticalScrollBarVisibility="Visible" Height="600">
+                        <ListBox  x:Name="SearchObjectsList" SelectionMode="Single">
+                        </ListBox>
+                    </ScrollViewer>
+                    <StackPanel Orientation="Horizontal" Width="300" HorizontalAlignment="Left" Spacing="10"  Margin="0,5,0,0">
+                        <Button HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="145" Click="SearchButton_OnClick">Поиск</Button>
+                        <Button HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="145" Click="Cancel_OnClick">Отмена</Button>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            </StackPanel>
+</Window>

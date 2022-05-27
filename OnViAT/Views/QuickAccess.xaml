@@ -1,0 +1,137 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:v="using:LibVLCSharp.Avalonia"
+        xmlns:onViAt="clr-namespace:OnViAT.Views"
+        xmlns:l="using:OnViAT.Views"
+        mc:Ignorable="d"
+        x:Class="OnViAT.Views.QuickAccess"
+        Title="OnViAT"
+        SizeToContent="Width"
+        Closing="Window_OnClosing"
+         Topmost="True"
+          SystemDecorations="BorderOnly"
+        PointerPressed="InputElement_OnPointerPressed"
+        DoubleTapped="InputElement_OnDoubleTapped"
+        Opened="Window_OnOpened">
+    <ScrollViewer VerticalScrollBarVisibility="Hidden">
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="5">
+        <Border Grid.Row="0" Grid.Column="0"
+                x:Name="RecordFragmentToolTip"
+                ToolTip.ShowDelay="350"
+                ToolTip.Placement="Right">
+                            <ToolTip.Tip>
+                                <TextBlock Text="Записать фрагмент" x:Name="RecordFragmentToolTipBlock"/>
+                            </ToolTip.Tip>
+                            <Button x:Name="RecordFragment_btn" IsEnabled="False"  Width="40" Height="40" Margin="2" Click="RecordFragment_Onclick">
+                            <Image Source="/Assets/RecordFragment.png"/>
+                        </Button>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="1"
+                                            ToolTip.Tip="Выделить фрагмент вручную"
+                                            ToolTip.ShowDelay="350"
+                                            ToolTip.Placement="Right">
+                            <Button x:Name="AddFragment_btn"  IsEnabled="False" Width="40" Height="40" Margin="2" Click="AddFragment_OnClick">
+                                <Image Source="/Assets/CreateFragment.png"/>
+                            </Button>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="2"
+                                ToolTip.Tip="Редактировать фрагмент"
+                                ToolTip.ShowDelay="350"
+                                ToolTip.Placement="Right">
+                        <Button x:Name="EditFragment_btn" IsEnabled="False" Width="40" Height="40"  Margin="2" Click="EditFragment_OnClick">
+                            <Image Source="/Assets/EditFragment.png"/>
+                        </Button>
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="3"
+                                ToolTip.Tip="Удалить фрагмент"
+                                ToolTip.ShowDelay="350"
+                                ToolTip.Placement="Right">
+                        <Button x:Name="RemoveFragment_btn" IsEnabled="False" Width="40" Height="40" Margin="2" Click="RemoveFragment_OnClick">
+                            <Image Source="/Assets/RemoveFragment.png"/>
+                        </Button>
+                        </Border>
+                        <Border Grid.Row="1" Grid.Column="0"
+                                ToolTip.Tip="Добавить индивида"
+                                ToolTip.ShowDelay="350"
+                                ToolTip.Placement="Right">
+                        <Button x:Name="AddIndividual_btn" IsEnabled="False" Width="40" Height="40" Margin="2"  Click="AddIndividual_OnClick">
+                            <Image Source="/Assets/CreateIndividual.png"/>
+                        </Button>
+                        </Border>
+                        <Border Grid.Row="1" Grid.Column="1"
+                                ToolTip.Tip="Редактировать индивида"
+                                ToolTip.ShowDelay="350"
+                                ToolTip.Placement="Right">
+                        <Button x:Name="EditIndividual_btn" IsEnabled="False" Width="40" Height="40" Margin="2"  Click="EditIndividual_OnClick">
+                            <Image Source="/Assets/EditIndividual.png"/>
+                        </Button>
+                            </Border>
+                        <Border Grid.Row="1" Grid.Column="2"
+                                ToolTip.Tip="Удалить индивида"
+                                ToolTip.ShowDelay="350"
+                                ToolTip.Placement="Right">
+                        <Button x:Name="RemoveIndividual_btn" IsEnabled="False" Width="40" Height="40" Margin="2"  Click="RemoveIndividual_OnClick">
+                            <Image Source="/Assets/RemoveIndividual.png"/>
+                        </Button>
+                            </Border>
+                        <Border Grid.Row="1" Grid.Column="3"
+                                ToolTip.Tip="Поиск среди файлов и фрагментов"
+                                ToolTip.ShowDelay="350"
+                                ToolTip.Placement="Right">
+                        <Button x:Name="Search_btn" Width="40" Height="40" Margin="2" IsEnabled="False">
+                            <Image Source="/Assets/SearchIndividual.png"/>
+                        </Button>
+                            </Border>
+                        <Border Grid.Row="2" Grid.Column="0"
+                                ToolTip.Tip="Редактировать метаданные"
+                                ToolTip.ShowDelay="350"
+                                ToolTip.Placement="Right">
+                        <Button x:Name="EditMetadata_btn" IsEnabled="False" Width="40" Height="40" Margin="2" Click="EditMetadataButton_Click">
+                            <Image Source="/Assets/EditFileMetadata.png"/>
+                        </Button>
+                            </Border>
+                        <Border Grid.Row="2" Grid.Column="1"
+                                ToolTip.Tip="Очистить разметку файла"
+                                ToolTip.ShowDelay="350"
+                                ToolTip.Placement="Right">
+                        <Button x:Name="ClearMarkup_btn" IsEnabled="False" Width="40" Height="40" Margin="2"  Click="ClearSelectedFileMarkup_OnClick">
+                            <Image Source="/Assets/ClearMarkup.png"/>
+                        </Button>
+                            </Border>
+                        <Border Grid.Row="2" Grid.Column="2"
+                                ToolTip.Tip="Настройка онтологии"
+                                ToolTip.ShowDelay="350"
+                                ToolTip.Placement="Right">
+                        <Button Width="40" Height="40" Margin="2" IsEnabled="False">
+                            <Image Source="/Assets/OntologySettings.png"/>
+                        </Button>
+                            </Border>
+                        <Border Grid.Row="2" Grid.Column="3"
+                                ToolTip.Tip="Экспортировать декодированную разметку выбранного файла"
+                                ToolTip.ShowDelay="350"
+                                ToolTip.Placement="Right">
+                        <Button x:Name="ExportMarkup_btn" IsEnabled="False" Width="40" Height="40" Margin="2" Click="TECH_BTN_CLICK">
+                            <Image Source="/Assets/ExportXml.png"/>
+                        </Button>
+                            </Border>
+        <Border Grid.Row="2" Grid.Column="3"
+                ToolTip.Tip="Экспортировать разметку выбранного файла"
+                ToolTip.ShowDelay="350"
+                ToolTip.Placement="Right">
+            <Button x:Name="ExportMarkup64_btn" IsEnabled="False" Width="40" Height="40" Margin="2" Click="Export64_btn_OnClick">
+                <Image Source="/Assets/Export64.png"/>
+            </Button>
+        </Border>
+        <Border Grid.Row="2" Grid.Column="3"
+                ToolTip.Tip="Закрыть панель быстрого доступа"
+                ToolTip.ShowDelay="350"
+                ToolTip.Placement="Right">
+            <Button Width="40" Height="40" Margin="2" Background="Red" Click="Button_OnClick">
+                <Image Source="/Assets/CloseQA.png"/>
+            </Button>
+        </Border>
+              </StackPanel>
+    </ScrollViewer>
+</Window>

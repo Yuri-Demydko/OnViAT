@@ -1,0 +1,36 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:v="using:LibVLCSharp.Avalonia"
+        xmlns:onViAt="clr-namespace:OnViAT.Views"
+        xmlns:l="using:OnViAT.Views"
+        mc:Ignorable="d" MinWidth="720" MinHeight="86" CanResize="false"
+        x:Class="OnViAT.Views.DescriptionSearchMenuForm"
+        Title="OnViAT"
+        SizeToContent="WidthAndHeight"
+        WindowStartupLocation="CenterOwner"
+        SystemDecorations="None"
+        VerticalContentAlignment="Center"
+        HorizontalContentAlignment="Stretch">
+        
+        
+        <StackPanel Orientation="Vertical" VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal">
+                <TextBox Width="595" Height="40" Margin="5" FontSize="16" x:Name="searchString"></TextBox>
+                <Button Width="40" Height="40" Margin="5" x:Name="SearchBtn" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="Search_OnClick">
+                    <Image Source="../Assets/QSearch.png">
+                        </Image>
+                </Button>
+                <Button Width="40" Height="40" Margin="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="Button_OnClick">
+                    <Image Source="../Assets/QSearchCancel.png">
+                    </Image>
+                </Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <CheckBox Content="Искать в описаниях файлов" x:Name="FilesSearch" Checked="FilesSearch_OnChecked" IsChecked="True" Margin="5,0,5,0" />
+                <CheckBox Content="Искать в описаниях фрагментов" x:Name="FragsSearch" Checked="FragsSearch_OnChecked" IsChecked="True" Margin="0"/>
+            </StackPanel>
+            </StackPanel>
+        
+        </Window>

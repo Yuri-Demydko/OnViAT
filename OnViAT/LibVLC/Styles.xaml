@@ -1,0 +1,30 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="using:LibVLCSharp.Avalonia"
+             xmlns:libVlc="clr-namespace:OnViAT.LibVLC"
+             mc:Ignorable="d">
+  <Style Selector="libVlc|VideoView">
+    <Setter Property="Background" Value="Black" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Panel Background="{TemplateBinding Background}">
+          <!--<Image Name="PART_RenderImage" />-->
+          <libVlc:VLCImageRenderer Name="PART_RenderImage" DisplayRenderStats="{TemplateBinding DisplayRenderStats}" />
+          <ContentPresenter Content="{TemplateBinding Content}" />
+        </Panel>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+  <Style Selector="libVlc|VideoView[VlcRenderingOptions=VlcNative]">
+    <Setter Property="Background" Value="Black" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Panel Background="{TemplateBinding Background}">
+          <libVlc:NativeVideoPresenter Name="PART_NativeHost" Content="{TemplateBinding Content}" />
+        </Panel>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+</Styles>

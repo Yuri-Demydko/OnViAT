@@ -1,0 +1,155 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <AssemblyName>OnViAT</AssemblyName>
+    <RootNamespace>OnViAT</RootNamespace>
+    <Company>Demydko Yuri / SSTU</Company>
+    <Product>OnViAT</Product>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <FileVersion>1.0.0</FileVersion>
+    <TargetFrameworks>net5.0;netcoreapp3.1</TargetFrameworks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="**\*.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <AvaloniaResource Include="**\*.xaml">
+      <SubType>Designer</SubType>
+    </AvaloniaResource>
+    <None Remove="Resources\MARKUP_BASE.owl" />
+    <EmbeddedResource Include="Resources\MARKUP_BASE.owl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <Compile Update="Views\AddOrEditFragmentForm.xaml.cs">
+      <DependentUpon>AddOrEditFragmentForm.xaml</DependentUpon>
+    </Compile>
+    <None Remove="Assets\fragment.png" />
+    <None Remove="Assets\RecordFragment.png" />
+    <AvaloniaResource Include="Assets\RecordFragment.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <None Remove="Assets\StopRecording.png" />
+    <AvaloniaResource Include="Assets\StopRecording.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <None Remove="Assets\CreateFragment.png" />
+    <AvaloniaResource Include="Assets\CreateFragment.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <None Remove="Assets\EditFragment.png" />
+    <AvaloniaResource Include="Assets\EditFragment.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <None Remove="Assets\RemoveFragment.png" />
+    <AvaloniaResource Include="Assets\RemoveFragment.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <None Remove="Assets\CreateIndividual.png" />
+    <AvaloniaResource Include="Assets\CreateIndividual.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <None Remove="Assets\EditIndividual.png" />
+    <AvaloniaResource Include="Assets\EditIndividual.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <None Remove="Assets\RemoveIndividual.png" />
+    <AvaloniaResource Include="Assets\RemoveIndividual.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <None Remove="Assets\ClearMarkup.png" />
+    <AvaloniaResource Include="Assets\ClearMarkup.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <None Remove="Assets\EditFileMetadata.png" />
+    <AvaloniaResource Include="Assets\EditFileMetadata.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <None Remove="Assets\OntologySettings.png" />
+    <AvaloniaResource Include="Assets\OntologySettings.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <None Remove="Assets\OpenDir.png" />
+    <AvaloniaResource Include="Assets\OpenDir.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <None Remove="Assets\Save.png" />
+    <AvaloniaResource Include="Assets\Save.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <None Remove="Assets\SearchIndividual.png" />
+    <AvaloniaResource Include="Assets\SearchIndividual.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <None Remove="Assets\ExportMarkup.svg" />
+    <None Remove="Assets\ExportMarkup.png" />
+    <AvaloniaResource Include="Assets\ExportMarkup.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <None Remove="Assets\PlayVideo.png" />
+    <AvaloniaResource Include="Assets\PlayVideo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <None Remove="Assets\PauseVideo.png" />
+    <AvaloniaResource Include="Assets\PauseVideo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <None Remove="Assets\StopVideo.png" />
+    <AvaloniaResource Include="Assets\StopVideo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <None Remove="Assets\CloseQA.png" />
+    <AvaloniaResource Include="Assets\CloseQA.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <None Remove="Assets\Export64.png" />
+    <AvaloniaResource Include="Assets\Export64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <None Remove="Assets\ExportXml.png" />
+    <AvaloniaResource Include="Assets\ExportXml.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <None Remove="Assets\QSearch.png" />
+    <AvaloniaResource Include="Assets\QSearch.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+    <None Remove="Assets\QSearchCancel.png" />
+    <AvaloniaResource Include="Assets\QSearchCancel.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AvaloniaResource Remove="Example1.xaml" />
+    <AvaloniaResource Remove="Example2.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Example1.xaml" />
+    <None Remove="Example2.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="0.10.0-rc1" />
+    <PackageReference Include="Avalonia.Desktop" Version="0.10.0-rc1" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.0-rc1" />
+    <PackageReference Include="LibVLCSharp" Version="3.5.0" />
+    <PackageReference Include="VideoLAN.LibVLC.Mac" Version="3.1.3.1" />
+    <PackageReference Include="VideoLAN.LibVLC.Windows" Version="3.0.11" />
+    <PackageReference Include="dotNetRDF.Query.FullText" Version="2.7.0" />
+    <PackageReference Include="dotNetRDF.Query.Spin" Version="2.7.0" />
+    <PackageReference Include="dotNetRDF" Version="2.7.0" />
+    <PackageReference Include="dotNetRDF.Data.DataTables" Version="2.7.0" />
+    <PackageReference Include="TagLibSharp" Version="2.2.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\BASE_ONTOLOGY.owl" />
+    <EmbeddedResource Include="Resources\BASE_ONTOLOGY.owl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>
