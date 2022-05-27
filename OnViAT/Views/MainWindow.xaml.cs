@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
@@ -571,14 +572,24 @@ namespace OnViAT.Views
 
         public void SaveDir()
         {
-            if (_storageModel != null)
-                foreach (var fileinfo_mrw_pair in _storageModel.FilesToMarkupModels)
+            if (_storageModel == null) return;
+            if(RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                _mediaPlayer.Stop();
+                var btn = this.FindControl<Button>("PlayPauseBTN");
+                var imgS = this.FindControl<Image>("PlayVideoImg").Source;
+                var img = new Image();
+                img.Source = imgS;
+                btn.Content = img;
+                _videoState = VideoStates.JustLoaded;
+            }
+            foreach (var fileinfo_mrw_pair in _storageModel.FilesToMarkupModels)
+            {
+                if (fileinfo_mrw_pair.Key.Exists)
                 {
-                    if (fileinfo_mrw_pair.Key.Exists)
-                    {
-                        fileinfo_mrw_pair.Value.ReWriteMarkup();
-                    }
+                    fileinfo_mrw_pair.Value.ReWriteMarkup();
                 }
+            }
         }
 
         internal void ClearSelectedFileMarkup_OnClick(object? sender, RoutedEventArgs e)
