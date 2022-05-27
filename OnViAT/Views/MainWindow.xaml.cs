@@ -922,6 +922,16 @@ namespace OnViAT.Views
         }
         private void SaveCurrentFile_OnClick(object? sender, RoutedEventArgs e)
         {
+            if(RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                _mediaPlayer.Stop();
+                var btn = this.FindControl<Button>("PlayPauseBTN");
+                var imgS = this.FindControl<Image>("PlayVideoImg").Source;
+                var img = new Image();
+                img.Source = imgS;
+                btn.Content = img;
+                _videoState = VideoStates.JustLoaded;
+            }
             if(_storageModel != null && !String.IsNullOrWhiteSpace(_storageModel.SelectedFileName) &&
              System.IO.File.Exists(_storageModel.SelectedFileName))
             {
