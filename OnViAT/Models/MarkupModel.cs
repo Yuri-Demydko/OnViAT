@@ -27,7 +27,7 @@ namespace OnViAT.Models
               
                 if (string.IsNullOrWhiteSpace(description) || !description.Contains(Constants.Constants.MARKUP_MARKER))
                 {
-                    _ontology = new OntologyModel(Constants.Constants.MARKUP_BASE, Constants.Constants.BASE_ONTOLOGY,Constants.Constants.ADDITION_GRAPH_CACHE);
+                    _ontology = new OntologyModel(Paths.Paths.MARKUP_BASE, Paths.Paths.BASE_ONTOLOGY,Paths.Paths.ADDITION_GRAPH_CACHE);
                    _fileMarkup= _ontology.InitMediaResourceMetadata
                    (_currentFile.Name,
                        "Нет описания",
@@ -41,8 +41,8 @@ namespace OnViAT.Models
                 {
                     _fileMarkup = DecodeFrom64(tfile.Tag.Description);
                     _ontology = new OntologyModel(_fileMarkup);
-                    _ontology.InitBaseGraph(Constants.Constants.BASE_ONTOLOGY);
-                    _ontology.SetAdditionsGraph(Constants.Constants.ADDITION_GRAPH_CACHE);
+                    _ontology.InitBaseGraph(Paths.Paths.BASE_ONTOLOGY);
+                    _ontology.SetAdditionsGraph(Paths.Paths.ADDITION_GRAPH_CACHE);
                 }
             }
             else throw new ArgumentException("No File");
@@ -50,10 +50,10 @@ namespace OnViAT.Models
         public void ClearMarkup()
         {
             var tfile = TagLib.File.Create(_currentFile.FullName);
-            _ontology = new OntologyModel(Constants.Constants.MARKUP_BASE, Constants.Constants.BASE_ONTOLOGY);
+            _ontology = new OntologyModel(Paths.Paths.MARKUP_BASE, Paths.Paths.BASE_ONTOLOGY);
             _fileMarkup= _ontology.InitMediaResourceMetadata(_currentFile.Name, "Нет описания",
                 _currentFile.CreationTime, DateTime.Now, tfile.Properties.Duration.TotalSeconds.ToString(CultureInfo.InvariantCulture))+Constants.Constants.MARKUP_MARKER;
-            _ontology.SetAdditionsGraph(Constants.Constants.ADDITION_GRAPH_CACHE);
+            _ontology.SetAdditionsGraph(Paths.Paths.ADDITION_GRAPH_CACHE);
             //
             tfile.Tag.Description = EncodeTo64(_fileMarkup);
             tfile.Save();

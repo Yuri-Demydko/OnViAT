@@ -33,6 +33,8 @@ namespace OnViAT.Views
             {
                 Title = title
             };
+            msgbox.Width = text.Length*10+20;
+            msgbox.Height = 150;
             msgbox.FindControl<TextBlock>("Text").Text = text;
             var buttonPanel = msgbox.FindControl<StackPanel>("Buttons");
 

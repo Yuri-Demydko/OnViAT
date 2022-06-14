@@ -6,7 +6,7 @@ namespace OnViAT.Helpers
     {
         public static string CheckCache()
         {
-            var path = Path.Combine(Directory.GetCurrentDirectory(), Constants.Constants.ADDITION_GRAPH_CACHE);
+            var path = Path.Combine(Directory.GetCurrentDirectory(), Paths.Paths.ADDITION_GRAPH_CACHE);
 
             if (File.Exists(path) &&
                 OntologyGraphValidatorHelper.IsValid(File.ReadAllText(path), Constants.Constants.ONTOLOGY_ADDITION_MARKER))

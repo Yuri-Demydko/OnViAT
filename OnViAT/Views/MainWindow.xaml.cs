@@ -803,7 +803,7 @@ namespace OnViAT.Views
                     //     .FilesToMarkupModels[_storageModel.SelectedFile]
                     //     .Ontology
                     //     .ExportGraphAsTree());
-                    form.SetupHierarchyTree(OntologyModel.ExportOntologyClassesAsTree(Constants.Constants.BASE_ONTOLOGY,AdditionalGraphPath));
+                    form.SetupHierarchyTree(OntologyModel.ExportOntologyClassesAsTree(Paths.Paths.BASE_ONTOLOGY,AdditionalGraphPath));
                     form.InitialSetup(_storageModel
                         .FilesToMarkupModels[_storageModel.SelectedFile], fragment.Uri);
                     form.ShowDialog(this);
@@ -968,7 +968,7 @@ namespace OnViAT.Views
                 return;
             
             var form =  new SearchMenuForm();
-            form.SetupHierarchyTree(OntologyModel.ExportOntologyClassesAsTree(Constants.Constants.BASE_ONTOLOGY,AdditionalGraphPath));
+            form.SetupHierarchyTree(OntologyModel.ExportOntologyClassesAsTree(Paths.Paths.BASE_ONTOLOGY,AdditionalGraphPath));
             this._searchModel = new OntologySearchModel(this._storageModel);
             form.SetupSearchModel(this._searchModel);
             form.ShowDialog(this);
@@ -1047,8 +1047,8 @@ namespace OnViAT.Views
             //temporary. Later it should open in non-dialog mode with checking for already opened form instances
             
             var form = new OntologyCustomizeForm();
-            form.SetupConfigurationModel(new OntologyConfigurationModel(Constants.Constants.BASE_ONTOLOGY,AdditionalGraphPath));
-            form.SetupHierarchyTree(OntologyModel.ExportOntologyClassesAsTree(Constants.Constants.BASE_ONTOLOGY,AdditionalGraphPath));
+            form.SetupConfigurationModel(new OntologyConfigurationModel(Paths.Paths.BASE_ONTOLOGY,AdditionalGraphPath));
+            form.SetupHierarchyTree(OntologyModel.ExportOntologyClassesAsTree(Paths.Paths.BASE_ONTOLOGY,AdditionalGraphPath));
             
             
             form.ShowDialog(this);
@@ -1105,7 +1105,7 @@ namespace OnViAT.Views
 
                 if (OntologyGraphValidatorHelper.IsValid(graphString, Constants.Constants.ONTOLOGY_ADDITION_MARKER))
                 {
-                    var newPath = Path.Combine(Directory.GetCurrentDirectory(), Constants.Constants.ADDITION_GRAPH_CACHE);
+                    var newPath = Path.Combine(Directory.GetCurrentDirectory(), Paths.Paths.ADDITION_GRAPH_CACHE);
                     await File.WriteAllTextAsync(newPath,graphString);
                     SetAdditionalGraphPath(newPath);
                     UpdateAll();

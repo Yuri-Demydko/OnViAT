@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -108,14 +109,18 @@ namespace OnViAT.Views
             try
             {
                 _ontologyConfigurationModel.AddSubClass(SelectedClassUri, NewUri);
-                var path=_ontologyConfigurationModel.SaveAdditionsGraph();
+                var path = _ontologyConfigurationModel.SaveAdditionsGraph();
                 (this.Owner as MainWindow)?.SetAdditionalGraphPath(path);
-                this.SetupHierarchyTree(OntologyModel.ExportOntologyClassesAsTree(Constants.Constants.BASE_ONTOLOGY,path));
+                this.SetupHierarchyTree(OntologyModel.ExportOntologyClassesAsTree(Paths.Paths.BASE_ONTOLOGY, path));
                 this.ClearNewName();
             }
-            catch
+            catch(UnauthorizedAccessException)
             {
-               await MessageBox.Show(this, "Error", "Error",MessageBox.MessageBoxButtons.Ok);
+                await MessageBox.Show(this, "Не достаточно разрешений.\nПереместите приложение в папку Applications", "Ошибка",MessageBox.MessageBoxButtons.Ok);
+            }
+            catch(Exception ex)
+            {
+               await MessageBox.Show(this, "Внутренняя ошибка\n.Пожалуйста, сообщите об этом разработчику", "Ошибка",MessageBox.MessageBoxButtons.Ok);
             }
         }
         private async void ParallelClass_OnClick(object? sender, RoutedEventArgs e)
@@ -125,12 +130,18 @@ namespace OnViAT.Views
                 _ontologyConfigurationModel.AddParallelClass(SelectedClassUri, NewUri);
                 var path=_ontologyConfigurationModel.SaveAdditionsGraph();
                 (this.Owner as MainWindow)?.SetAdditionalGraphPath(path);
-                this.SetupHierarchyTree(OntologyModel.ExportOntologyClassesAsTree(Constants.Constants.BASE_ONTOLOGY,path));
+                this.SetupHierarchyTree(OntologyModel.ExportOntologyClassesAsTree(Paths.Paths.BASE_ONTOLOGY,path));
                 this.ClearNewName();
             }
-            catch
+            catch (UnauthorizedAccessException)
             {
-                await MessageBox.Show(this, "Error", "Error",MessageBox.MessageBoxButtons.Ok);
+                await MessageBox.Show(this, "Не достаточно разрешений.\nПереместите приложение в папку Applications",
+                    "Ошибка", MessageBox.MessageBoxButtons.Ok);
+            }
+            catch (Exception ex)
+            {
+                await MessageBox.Show(this, "Внутренняя ошибка\n.Пожалуйста, сообщите об этом разработчику", "Ошибка",
+                    MessageBox.MessageBoxButtons.Ok);
             }
         }
         private async void Rename_OnClick(object? sender, RoutedEventArgs e)
@@ -140,12 +151,16 @@ namespace OnViAT.Views
                 _ontologyConfigurationModel.RenameCustomClass(SelectedClassUri, NewUri);
                 var path=_ontologyConfigurationModel.SaveAdditionsGraph();
                 (this.Owner as MainWindow)?.SetAdditionalGraphPath(path);
-                this.SetupHierarchyTree(OntologyModel.ExportOntologyClassesAsTree(Constants.Constants.BASE_ONTOLOGY,path));
+                this.SetupHierarchyTree(OntologyModel.ExportOntologyClassesAsTree(Paths.Paths.BASE_ONTOLOGY,path));
                 this.ClearNewName();
             }
-            catch
+            catch(UnauthorizedAccessException)
             {
-                await MessageBox.Show(this, "Error", "Error",MessageBox.MessageBoxButtons.Ok);
+                await MessageBox.Show(this, "Не достаточно разрешений.\nПереместите приложение в папку Applications", "Ошибка",MessageBox.MessageBoxButtons.Ok);
+            }
+            catch(Exception ex)
+            {
+                await MessageBox.Show(this, "Внутренняя ошибка\n.Пожалуйста, сообщите об этом разработчику", "Ошибка",MessageBox.MessageBoxButtons.Ok);
             }
         }
         private async void Remove_OnClick(object? sender, RoutedEventArgs e)
@@ -155,12 +170,12 @@ namespace OnViAT.Views
                 _ontologyConfigurationModel.RemoveCustomClass(SelectedClassUri);
                 var path=_ontologyConfigurationModel.SaveAdditionsGraph();
                 (this.Owner as MainWindow)?.SetAdditionalGraphPath(path);
-                this.SetupHierarchyTree(OntologyModel.ExportOntologyClassesAsTree(Constants.Constants.BASE_ONTOLOGY,path));
+                this.SetupHierarchyTree(OntologyModel.ExportOntologyClassesAsTree(Paths.Paths.BASE_ONTOLOGY,path));
                 this.ClearNewName();
             }
-            catch
+            catch(Exception ex)
             {
-                await MessageBox.Show(this, "Error", "Error",MessageBox.MessageBoxButtons.Ok);
+                await MessageBox.Show(this, ex.Message, "Error",MessageBox.MessageBoxButtons.Ok);
             }
         }
         private void Window_OnClosing(object? sender, CancelEventArgs e)

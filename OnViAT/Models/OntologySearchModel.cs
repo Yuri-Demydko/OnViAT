@@ -22,7 +22,7 @@ namespace OnViAT.Models
         {
             var baseGraph = new Graph();
             RdfXmlParser parser = new RdfXmlParser();
-            parser.Load(baseGraph, Constants.Constants.BASE_ONTOLOGY);
+            parser.Load(baseGraph, Paths.Paths.BASE_ONTOLOGY);
             
             MergeMarkupGraphs(storage,baseGraph);
 

@@ -48,7 +48,7 @@ namespace OnViAT.Models
 
         public string SaveAdditionsGraph(string path=null)
         {
-            path = path ?? Path.Combine(Directory.GetCurrentDirectory(), Constants.Constants.ADDITION_GRAPH_CACHE);
+            path = path ?? Path.Combine(Directory.GetCurrentDirectory(), Paths.Paths.ADDITION_GRAPH_CACHE);
             var writer = new RdfXmlWriter();
 
             var graphString = StringWriter.Write(additionsGraph, writer)+Constants.Constants.ONTOLOGY_ADDITION_MARKER;
@@ -63,6 +63,7 @@ namespace OnViAT.Models
             baseGraph.Merge(additionsGraph);
             
             var (rdfType,owlClass,rdfsSubClassOf)= GetBasicUriNodes();
+        
 
             var parallelParent = baseGraph.GetUriNode(new Uri(parallelParentUri));
             var parent = baseGraph.GetTriplesWithSubjectPredicate(parallelParent, rdfsSubClassOf).FirstOrDefault()?.Object;
